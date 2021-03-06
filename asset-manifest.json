@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/treemap-diagram/static/js/main.ca1bdc58.chunk.js",
-    "main.js.map": "/treemap-diagram/static/js/main.ca1bdc58.chunk.js.map",
+    "main.js": "/treemap-diagram/static/js/main.a8b3f3b7.chunk.js",
+    "main.js.map": "/treemap-diagram/static/js/main.a8b3f3b7.chunk.js.map",
     "runtime-main.js": "/treemap-diagram/static/js/runtime-main.250b5b0a.js",
     "runtime-main.js.map": "/treemap-diagram/static/js/runtime-main.250b5b0a.js.map",
     "static/js/2.594afa12.chunk.js": "/treemap-diagram/static/js/2.594afa12.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.250b5b0a.js",
     "static/js/2.594afa12.chunk.js",
-    "static/js/main.ca1bdc58.chunk.js"
+    "static/js/main.a8b3f3b7.chunk.js"
   ]
 }
