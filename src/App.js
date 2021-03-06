@@ -9,7 +9,7 @@ import { Grid } from '@material-ui/core';
 import {legendColor} from 'd3-svg-legend';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Copyright() {
   return (
@@ -25,7 +25,7 @@ function Copyright() {
 }
 
 
-function BarChart({ id, data, width = 1200, height = 570 }) {
+function BarChart({ id, key,data, width = 1200, height = 570 }) {
   var distance = 130
   var treemap = data => d3.treemap()
     .size([width - distance, height])
@@ -50,7 +50,6 @@ function BarChart({ id, data, width = 1200, height = 570 }) {
   // console.log(root.leaves()) 
       
   useEffect(() => {
-    console.log('updating')
   const root = treemap(data) ;
 
     const z = d3.schemePaired
@@ -177,30 +176,55 @@ Wii 4 53
 }
 
 export default function App() {
-  
+  const [fcc, setFcc] = useState([])
   const [dataset, setDataset] = useState([])
   const [title, setTitle] = useState('Video Game Sales')
   const [url, setUrl] = useState('')
+  const [changed, setChanged] = useState(0)
+  const [loading, setLoading] = useState(false)
   
+
   useEffect(() => {
+    
     if (url == ''){
       fetch("https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json")
         .then(response => response.json())
         .then(data => {
+          setFcc(data)
           setDataset(data);
+          setChanged(changed + 1)
+    setLoading(false)
+
           })
     } else{
       fetch(url)
         .then(response => response.json())
         .then(data => {
           setDataset(data);
+          setChanged(changed + 1)
+    setLoading(false)
+
           })
-        console.log('updated')
     }
   }, [ url])
-  const treeDiagram = BarChart({data: dataset})
   return (
-    <Grid container alignItems = 'center' justify = 'center'  style = {{backgroundImage: 'radial-gradient( grey, #414141, #000000)'}}>
+    <Grid container spacing = {5} alignItems = 'center' justify = 'center'  direction='column' style = {{backgroundImage: 'radial-gradient( grey, #414141, #000000)'}}>
+      {/* <Grid item >
+        <Box  boxShadow={24} p={2} style={{backgroundColor: 'white'}} borderRadius={40}>
+          <Typography variant="h4" component="h1" align = 'center' id='title' gutterBottom>
+            {title}
+          </Typography>
+          <Typography variant="body1" component="h2" id='description' align = 'center' gutterBottom>
+            Here is the Treemap about the {title} grouped by their respective categories.
+          </Typography>
+          {changed != 0 && 
+            <BarChart id="barchart" data={fcc} />
+          }
+          
+          <Copyright />
+        </Box>
+      </Grid> */}
+
       <Grid item >
         <Box  boxShadow={24} p={2} style={{backgroundColor: 'white'}} borderRadius={40}>
           <Typography variant="h4" component="h1" align = 'center' id='title' gutterBottom>
@@ -209,21 +233,20 @@ export default function App() {
           <Typography variant="body1" component="h2" id='description' align = 'center' gutterBottom>
             Here is the Treemap about the {title} grouped by their respective categories.
           </Typography>
-          {dataset.length != 0 && 
-            <BarChart id="barchart" data={dataset} />
+          {changed == 0 || (loading)
+            
+            ? <Grid container justify = "center"><CircularProgress /></Grid>
+            :<BarChart key={changed} id="barchart" data={dataset}  />
           }
           <Box m={1}>
-          <Grid container justify = "center">
-            <ButtonGroup size="large" variant="contained" aria-label="contained primary button group">
-              <Button onClick={() => {setTitle('Kickstarter Pledges'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/kickstarter-funding-data.json')}}>Kickstarter Pledges</Button>
-              <Button onClick={() => {setTitle('Movie Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json')}}>Movie Sales</Button>
-              <Button onClick={() => {setTitle('Video Game Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json')}}>Video Game Sales</Button>
-            </ButtonGroup>
-
-          </Grid>
-          
+            <Grid container justify = "center">
+              <ButtonGroup size="large" variant="contained" aria-label="contained primary button group">
+                <Button onClick={() => {setLoading(true); setTitle('Kickstarter Pledges'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/kickstarter-funding-data.json')}}>Kickstarter Pledges</Button>
+                <Button onClick={() => {setLoading(true); setTitle('Movie Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json')}}>Movie Sales</Button>
+                <Button onClick={() => {setLoading(true); setTitle('Video Game Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json')}}>Video Game Sales</Button>
+              </ButtonGroup>
+            </Grid>
           </Box>
-         
           <Copyright />
         </Box>
       </Grid>
