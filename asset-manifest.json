@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/treemap-diagram/static/js/main.5b8aa247.chunk.js",
-    "main.js.map": "/treemap-diagram/static/js/main.5b8aa247.chunk.js.map",
+    "main.js": "/treemap-diagram/static/js/main.ca1bdc58.chunk.js",
+    "main.js.map": "/treemap-diagram/static/js/main.ca1bdc58.chunk.js.map",
     "runtime-main.js": "/treemap-diagram/static/js/runtime-main.250b5b0a.js",
     "runtime-main.js.map": "/treemap-diagram/static/js/runtime-main.250b5b0a.js.map",
-    "static/js/2.c36b0d6e.chunk.js": "/treemap-diagram/static/js/2.c36b0d6e.chunk.js",
-    "static/js/2.c36b0d6e.chunk.js.map": "/treemap-diagram/static/js/2.c36b0d6e.chunk.js.map",
+    "static/js/2.594afa12.chunk.js": "/treemap-diagram/static/js/2.594afa12.chunk.js",
+    "static/js/2.594afa12.chunk.js.map": "/treemap-diagram/static/js/2.594afa12.chunk.js.map",
     "index.html": "/treemap-diagram/index.html",
-    "static/js/2.c36b0d6e.chunk.js.LICENSE.txt": "/treemap-diagram/static/js/2.c36b0d6e.chunk.js.LICENSE.txt"
+    "static/js/2.594afa12.chunk.js.LICENSE.txt": "/treemap-diagram/static/js/2.594afa12.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.250b5b0a.js",
-    "static/js/2.c36b0d6e.chunk.js",
-    "static/js/main.5b8aa247.chunk.js"
+    "static/js/2.594afa12.chunk.js",
+    "static/js/main.ca1bdc58.chunk.js"
   ]
 }
