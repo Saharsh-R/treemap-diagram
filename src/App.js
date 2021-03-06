@@ -185,7 +185,7 @@ export default function App() {
   
 
   useEffect(() => {
-    
+    setLoading(true);
     if (url == ''){
       fetch("https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json")
         .then(response => response.json())
@@ -193,7 +193,7 @@ export default function App() {
           setFcc(data)
           setDataset(data);
           setChanged(changed + 1)
-    setLoading(false)
+          setLoading(false)
 
           })
     } else{
@@ -202,7 +202,7 @@ export default function App() {
         .then(data => {
           setDataset(data);
           setChanged(changed + 1)
-    setLoading(false)
+          setLoading(false)
 
           })
     }
@@ -241,9 +241,9 @@ export default function App() {
           <Box m={1}>
             <Grid container justify = "center">
               <ButtonGroup size="large" variant="contained" aria-label="contained primary button group">
-                <Button onClick={() => {setLoading(true); setTitle('Kickstarter Pledges'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/kickstarter-funding-data.json')}}>Kickstarter Pledges</Button>
-                <Button onClick={() => {setLoading(true); setTitle('Movie Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json')}}>Movie Sales</Button>
-                <Button onClick={() => {setLoading(true); setTitle('Video Game Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json')}}>Video Game Sales</Button>
+                <Button onClick={() => { setTitle('Kickstarter Pledges'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/kickstarter-funding-data.json')}}>Kickstarter Pledges</Button>
+                <Button onClick={() => { setTitle('Movie Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json')}}>Movie Sales</Button>
+                <Button onClick={() => { setTitle('Video Game Sales'); setUrl('https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json')}}>Video Game Sales</Button>
               </ButtonGroup>
             </Grid>
           </Box>
